@@ -100,7 +100,7 @@ highlight_roles() {
         local matched_line
         matched_line=$(echo "$existing_roles" | grep -E "^${role}(\s|$)" | head -n 1)
         
-        # If not found directly, and this is a member check (CMEK), check if inherited via group
+        # If not found directly, check if inherited via group
         if [[ -z "$matched_line" && "$role" == serviceAccount:* ]]; then
             local sa_email="${role#serviceAccount:}"
             # Extract all groups from existing_roles
